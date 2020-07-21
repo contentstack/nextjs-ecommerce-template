@@ -1,0 +1,18 @@
+.text-area .img-container {
+    height: 500px;
+    width: 400px;
+    margin: auto;
+    margin-bottom: 3em;
+    background: #fbf3ef;
+}
+
+.text-area .img-container img {
+    width: 425px; 
+    left: -100px; 
+    top: 50px; 
+    position: relative;
+}
+
+.text-area h1,h2,h3,h4,h5,h6 {
+    margin-top: 0;
+}

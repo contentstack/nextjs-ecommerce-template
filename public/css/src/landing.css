@@ -1,0 +1,46 @@
+@import './landing/member_header.css';
+@import './landing/category_sales.css';
+@import './landing/trends.css';
+@import './landing/products.css';
+@import './landing/features.css';
+@import './landing/reviews.css';
+@import './landing/newsletter.css';
+@import './landing/ribbons.css';
+
+#page-header {
+    position: relative;
+}
+
+#page-header .page-header-bground {
+    position: absolute;
+    left: 0;
+    width: 36%;
+    bottom: 0;
+    top: 0;
+    background-color: #d4c694;
+}
+
+#landing-page div[class^="col-"] {
+    margin-bottom: 1em;
+}
+
+#landing-page .img-responsive {
+    margin: auto;
+}
+
+#landing-page .landing-page-block {
+    padding: 2em 3em;
+    position: relative;
+    background: #fff;
+}
+
+.ribbon5 a {
+    color: #eaeaea;
+    font-size: 1.1em;
+    letter-spacing: 0.005em;
+}
+
+#global-widgets div[class ^= "col-"] {
+    margin: 0 !important;
+    padding: 0 !important;
+}

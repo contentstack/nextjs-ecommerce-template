@@ -1,0 +1,17 @@
+#category-sales .category-sales-name {
+    font-size: 1.09em;
+    margin-top: 1em;
+    text-align: center;
+    font-weight: 600;
+}
+
+#category-sales .category-sales-link,
+#category-sales .category-sales-link:hover {
+    outline: 0;
+    color: #000;
+    text-decoration: none;
+}
+
+#category-sales .category-sales-link:hover {
+    color: #a5996d;
+}

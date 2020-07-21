@@ -1,0 +1,78 @@
+@import './checkmark.css';
+
+#food-recipe-container h1 {
+    font-size: 50px;
+}
+
+#food-recipe-container .food-recipe-introduction {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+#food-recipe-container .food-recipe-featured {
+    margin-top: 2em;
+    display: flex;
+}
+
+#food-recipe-container .food-recipe-featured figure {
+    margin-right: 3em;
+}
+
+#food-recipe-container .food-recipe-overview {
+    font-size: 16px;
+    width: 220px;
+    height: 200px;
+
+    border-radius: 5px;
+    padding: 24px;
+    border: 2px solid rgba(0,0,0,0.15);
+}
+
+#food-recipe-container .food-recipe-overview strong {
+    margin-right: .25em;
+}
+
+#food-recipe-container .food-recipe-overview footer {
+    margin-top: 1em;
+    text-align: center;
+}
+
+#food-recipe-container .food-recipe-overview footer a {
+    color: var(--theme-link-color);
+}
+
+#food-recipe-container .food-recipe-ingredients,
+#food-recipe-container .food-recipe-instructions {
+    margin-top: 3em;
+    padding-top: 3em;
+    border-top: 2px solid rgba(0,0,0,0.15);
+    max-width: 582px;
+}
+
+#food-recipe-container .food-recipe-ingredients .checkmark-container {
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 1.5em;
+}
+
+#food-recipe-container h3 {
+    font-size: 24px;
+    margin-bottom: 2.5em;
+}
+
+#food-recipe-container .food-recipe-instructions p {
+    font-size: 18px;
+    margin-bottom: 32px;
+}
+
+@media only screen and (max-width: 994px) {
+    #food-recipe-container .food-recipe-featured {
+        display: block;
+    }
+
+    #food-recipe-container .food-recipe-overview {
+        width: 100%;
+        max-width: 582px;
+        margin-top: 3em;
+    }
+}

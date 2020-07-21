@@ -1,0 +1,46 @@
+#newsletter {
+    background: #000 !important;
+    padding: 3em !important;
+}
+
+#newsletter ion-icon {
+    color: #ada071;
+    font-size: 5em;
+}
+
+#newsletter .newsletter-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#newsletter .newsletter-heading {
+    width: 25em;
+    display: flex;
+}
+
+#newsletter .newsletter-heading-text {
+    margin-left: 1.5em;
+}
+
+#newsletter .newsletter-heading-text p {
+    color: silver;
+}
+
+#newsletter .newsletter-heading-text h4 {
+    color: #fff;
+    margin-top: 0;
+}
+
+#newsletter .newsletter-form {
+    margin-left: 2em;
+}
+
+#newsletter .newsletter-form input {
+    border: 0;
+    padding: .5em 1em;
+    color: silver;
+    background: #333333;
+    outline: 0;
+    width: 20em;
+}

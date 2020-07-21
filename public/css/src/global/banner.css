@@ -1,0 +1,19 @@
+.global-banner {
+    background: #f0e0d8;
+    text-align: center;
+}
+
+.global-banner a {
+    padding: 1em;
+    width: 100%;
+    font-family: var(--theme--menu-heading-font);
+    font-weight: 500;
+    height: 100%;
+    display: block;
+    color: #000;
+    text-decoration: none;
+}
+
+.sd-menu.sticky + .global-banner {
+    margin-top: 54px;
+}

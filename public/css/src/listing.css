@@ -1,0 +1,63 @@
+.listing-page-card {
+    margin-bottom: 1em;
+}
+
+.listing-page-card-details {
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    height: 15em;
+    background: #f9f9f9;
+    border: 1px solid #ececec;
+    position: relative;
+    color: #717170;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+.listing-page-card-details:hover,
+.listing-page-card-details:active,
+.listing-page-card-details:focus {
+    text-decoration: none;
+    color: #000;
+    border-color: #d6d3d3;
+}
+
+.listing-page-card-details .listing-page-card-using {
+    text-transform: capitalize;
+}
+
+.listing-page-card-details footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #424242;
+    color: #fff;
+    height: 5em;
+    padding: .5em 1em;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.listing-page-card-details footer p {
+    margin: 0;
+    padding: 0;
+}
+
+.listing-page-card-details .listing-page-card-author {
+    font-family: var(--theme--heading-font);
+    font-size: 1.3em;
+}
+
+.listing-page-card-details .listing-page-card-author,
+.listing-page-card-details .listing-page-card-updated {
+    display: flex;
+    align-items: center;
+}
+
+.listing-page-card-details ion-icon {
+    font-size: 14px;
+    margin-right: .45em;
+}

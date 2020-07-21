@@ -1,0 +1,21 @@
+.add2cart {
+    background: #000;
+    color: #fff;
+    padding: .55em 1em;
+    display: block;
+    border-radius: 2px;
+    width: 85px;
+}
+
+.add2cart > .add {
+    position: relative;
+    top: -1px;
+    padding-left: .5em;
+}
+
+.add2cart:active,
+.add2cart:focus,
+.add2cart:hover {
+    color: #fff;
+    text-decoration: none;
+}
