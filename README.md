@@ -25,7 +25,3 @@ We have created an in-depth tutorial on how you can create your application usin
 Read Contentstack [docs](https://www.contentstack.com/docs/)
 
 Learn about [Next.js](https://learnnextjs.com/)
-
-## Configuration
-
-In next.config.js file add required details
