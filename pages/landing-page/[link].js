@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import Error from "next/error";
 import Stack from "../../sdk-plugins/index";
@@ -46,7 +47,7 @@ class LandingPage extends React.Component {
       }
     } catch (error) {
       console.log(error);
-      return { data: { statusCode: error.statusCode, query: query } };
+      return { data: { statusCode: error.statusCode } };
     }
   }
 

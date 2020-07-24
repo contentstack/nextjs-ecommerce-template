@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable react/prop-types */
 import React from "react";
 import Error from "next/error";
 import Layout from "../../components/Layout";
@@ -28,8 +30,7 @@ class CategoryType extends React.Component {
           category: check[0].title,
           header: header[0][0],
           statusCode: 200,
-          result: result[0],
-          query: locale,
+          result: result[0]
         },
       };
     } catch (err) {

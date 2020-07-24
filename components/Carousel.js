@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 class Carousel extends React.Component {
   render() {

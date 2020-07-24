@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import Stack from "../../sdk-plugins/index";
 import Layout from "../../components/Layout";
@@ -12,7 +13,7 @@ class AllCustomPage extends React.Component {
 
     const result = await Stack.getEntryWithoutRef("custom_pages", locale);
     const header = await Stack.getEntryWithoutRef("menu", locale);
-    return { data: { result: result[0], header: header[0][0], query: query } };
+    return { data: { result: result[0], header: header[0][0] } };
   }
 
   componentDidMount() {

@@ -1,5 +1,6 @@
+/* eslint-disable react/prop-types */
+
 import React from "react";
-import CategoryProducts from "./products";
 class CategoryTrends extends React.Component {
   render() {
     return (

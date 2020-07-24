@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 
 let text =
@@ -7,7 +8,7 @@ let text =
 
 class DevTools extends React.Component {
   componentDidMount() {
-    $("#dialog_devtools_json").jsonViewer(this.props.jsonCode, {
+    $("#dialog_devtools_box_json").jsonViewer(this.props.jsonCode, {
       collapsed: true,
     });
   }
@@ -25,7 +26,7 @@ class DevTools extends React.Component {
             outline: "0",
           }}
           data-toggle="modal"
-          data-target="#dialog_devtools"
+          data-target="#dialog_devtools_box"
         >
           <i
             className="fa fa-wrench theme--menu-text-color"
@@ -34,10 +35,10 @@ class DevTools extends React.Component {
         </button>
         <div
           className="modal fade"
-          id="dialog_devtools"
+          id="dialog_devtools_box"
           tabIndex="-1"
           role="dialog"
-          aria-labelledby="dialog_devtools_label"
+          aria-labelledby="dialog_devtools_box_label"
         >
           <div className="modal-dialog" role="document">
             <div className="modal-content">
@@ -50,13 +51,13 @@ class DevTools extends React.Component {
                 >
                   <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 className="modal-title" id="dialog_devtools_label">
+                <h4 className="modal-title" id="dialog_devtools_box_label">
                   Developer Tools
                 </h4>
               </div>
               <div className="modal-body">
                 <pre
-                  id="dialog_devtools_json"
+                  id="dialog_devtools_box_json"
                   style={{ height: "500px" }}
                 ></pre>
               </div>

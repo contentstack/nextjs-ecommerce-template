@@ -1,3 +1,5 @@
+/* eslint-disable no-prototype-builtins */
+/* eslint-disable react/prop-types */
 import React from "react";
 import Layout from "../components/Layout";
 import Carousel from "../components/Carousel";
@@ -21,7 +23,7 @@ class Home extends React.Component {
       );
       const header = await Stack.getEntryWithoutRef("menu", locale);
       return {
-        data: { result: result[0][0], header: header[0][0], query: locale },
+        data: { result: result[0][0], header: header[0][0]},
       };
     } catch (error) {
       console.error(error);

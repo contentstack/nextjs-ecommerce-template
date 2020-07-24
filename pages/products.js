@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import React from "react";
 import Stack from "../sdk-plugins/index";
 import Layout from "../components/Layout";
@@ -23,8 +24,7 @@ class Products extends React.Component {
         data: {
           result: result[0],
           header: header[0][0],
-          current: query.page,
-          locale: locale,
+          locale: locale
         },
       };
     } catch (error) {

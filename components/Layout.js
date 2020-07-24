@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { Component } from "react";
 import GlobalBanner from "./GlobalBanner";
 import Header from "./Header";

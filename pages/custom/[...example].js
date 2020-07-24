@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-prototype-builtins */
 import React from "react";
 import Stack from "../../sdk-plugins/index";
 import Layout from "../../components/Layout";
@@ -26,7 +28,6 @@ class Example extends React.Component {
           result: result,
           header: header[0][0],
           statusCode: 200,
-          query: locale,
         },
       };
     } catch {

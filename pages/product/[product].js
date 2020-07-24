@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import Error from "next/error";
 import Layout from "../../components/Layout";

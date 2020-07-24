@@ -57,7 +57,7 @@ export default {
       });
       Stack.ContentType(ctUid)
         .Entry(entryId)
-        // .language(locale)
+        .language(locale)
         .fetch()
         .then(
           (result) => {

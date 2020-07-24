@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import Error from "next/error";
 import Stack from "../../sdk-plugins/index";
@@ -19,7 +20,6 @@ class AllLandingPage extends React.Component {
           result: result[0],
           header: header[0][0],
           statusCode: 200,
-          query: locale,
         },
       };
     } catch (error) {

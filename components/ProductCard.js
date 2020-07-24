@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 class ProductCard extends React.Component {
   render() {
