@@ -15,7 +15,6 @@ import CategoryProducts from "../../template/landing-page/products";
 class LandingPage extends React.Component {
   static async getInitialProps({ query }) {
     try {
-      if (query.link === "weekend-sale") {
         let locale;
         if (query.locale != undefined) {
           locale = query.locale;
@@ -42,9 +41,6 @@ class LandingPage extends React.Component {
             locale: locale,
           },
         };
-      } else {
-        throw { statusCode: 404, errorMessage: "Page not found" };
-      }
     } catch (error) {
       console.log(error);
       return { data: { statusCode: error.statusCode } };

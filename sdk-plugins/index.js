@@ -44,12 +44,14 @@ export default {
         );
     });
   },
-  getEntrySpecific(ctUid, entryId, locale) {
+  getEntrySpecific(ctUid, locale) {
     return new Promise((resolve, reject) => {
       Stack.ContentType(ctUid)
-        .Entry(entryId)
-        .language(locale)
-        .fetch()
+        .Query()
+			.language(locale)
+			.toJSON()
+			// .includeCount()
+			.find()
         .then(
           (result) => {
             resolve(result);
@@ -61,12 +63,18 @@ export default {
     });
   },
   getEntrySpecificWithRef(ctUid, entryId, ref, locale) {
+    console.log(ctUid, entryId, ref, locale);
     return new Promise((resolve, reject) => {
       Stack.ContentType(ctUid)
-        .Entry(entryId)
+        .Query()
         .language(locale)
+        .toJSON()
+        .or(
+          Stack.ContentType(ctUid).Query().where("uid", entryId),
+          Stack.ContentType(ctUid).Query().where("url", `/product/${entryId}`)
+        )
         .includeReference(ref)
-        .fetch()
+        .find()
         .then(
           (result) => {
             resolve(result);

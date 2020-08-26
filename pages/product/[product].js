@@ -14,16 +14,16 @@ class Product extends React.Component {
       } else {
         locale = query.locale;
       }
-
       const result = await Stack.getEntrySpecificWithRef(
         "product",
         query.product,
-        ["categories", "related_products"]
+        ["categories", "related_products"],
+        locale
       );
       const header = await Stack.getEntryWithoutRef("menu", locale);
       return {
         data: {
-          result: result,
+          result: result[0][0],
           header: header[0][0],
           query: locale,
           statusCode: 200,
@@ -40,6 +40,7 @@ class Product extends React.Component {
       data: {},
     };
   }
+
   componentDidMount() {
     let search = new URL(window.location.href).search;
     if (search.includes("locale")) {
@@ -96,6 +97,7 @@ class Product extends React.Component {
                           if (id === 0)
                             return (
                               <img
+                                id="slideMainContent"
                                 src={image.url + "?width=450&height=450"}
                                 alt={image.filename}
                                 draggable="false"
@@ -110,6 +112,12 @@ class Product extends React.Component {
                       ? data.featured_image.map(function (image, id) {
                           return (
                             <img
+                              onClick={(e) => {
+                                $("#slideMainContent").attr(
+                                  "src",
+                                  e.target.src
+                                );
+                              }}
                               src={image.url + "?width=450&height=450"}
                               alt={image.filename}
                               draggable="false"

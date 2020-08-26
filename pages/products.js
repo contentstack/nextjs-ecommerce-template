@@ -33,6 +33,7 @@ class Products extends React.Component {
   }
   componentDidMount() {
     let search = new URL(window.location.href).search;
+    console.log(this.props.data.result);
     if (search.includes("locale")) {
       $("#selectpicker").val("fr-fr");
     } else {

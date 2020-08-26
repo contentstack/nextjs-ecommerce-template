@@ -1,8 +1,8 @@
 module.exports = {
   env: {
-    api_key: "Your apikey",
-    delivery_token: "Your delivery token",
-    environment: "Your publishing environment",
-    region: 'Your region'
+    api_key: "Your Api Key",
+    delivery_token: "Your Delivery Token",
+    environment: "Your Environment",
+    region: 'Your Region'
   },
 };

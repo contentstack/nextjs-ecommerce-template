@@ -17,15 +17,20 @@ class Example extends React.Component {
         locale = query.locale;
       }
 
-      const result = await Stack.getEntrySpecific(
+      console.log("custom_pages",
+      query.example,
+      locale);
+
+      let result = await Stack.getEntrySpecific(
         "custom_pages",
-        query.example[1],
         locale
       );
+      result = result[0].filter(el => el.uid == query.example[1] )
+  
       const header = await Stack.getEntryWithoutRef("menu", locale);
       return {
         data: {
-          result: result,
+          result: result[0],
           header: header[0][0],
           statusCode: 200,
         },
@@ -48,11 +53,13 @@ class Example extends React.Component {
     } else {
       $("#selectpicker").val("en-us");
     }
+    console.log(this.props.data.result );
     this.setState({ result: this.props.data.result });
   }
 
   render() {
     let result = this.state.result;
+    console.log(result);
     function renderContent() {
       let send = [];
       if (result) {
