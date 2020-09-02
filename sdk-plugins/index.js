@@ -1,9 +1,12 @@
 const Contentstack = require("contentstack");
+import getConfig from 'next/config'
+const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
+
 const Stack = Contentstack.Stack({
-  api_key: process.env.api_key,
-  delivery_token: process.env.delivery_token,
-  environment: process.env.environment,
-  region: process.env.region ? process.env.region : "us",
+  api_key: serverRuntimeConfig.api_key? serverRuntimeConfig.api_key:publicRuntimeConfig.api_key,
+  delivery_token: serverRuntimeConfig.delivery_token? serverRuntimeConfig.delivery_token:publicRuntimeConfig.delivery_token,
+  environment: serverRuntimeConfig.environment? serverRuntimeConfig.environment:publicRuntimeConfig.environment,
+  region: serverRuntimeConfig.region ? serverRuntimeConfig.region : publicRuntimeConfig.region? publicRuntimeConfig.region:"us",
 });
 
 export default {

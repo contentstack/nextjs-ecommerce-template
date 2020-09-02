@@ -99,43 +99,6 @@ class LandingPage extends React.Component {
                 </div>
               </div>
             </section>
-
-            <div className="container">
-              <div className="row">
-                {result.offer.enabled ? (
-                  <span className="ribbon5 theme--brand-trinary-color-background">
-                    <button
-                      type="button"
-                      style={{
-                        width: "100%",
-                        background: "transparent",
-                        borderColor: "transparent",
-                        outline: "0",
-                      }}
-                      data-toggle="modal"
-                      data-target="#dialog_offer"
-                    >
-                      <a
-                        className="theme--brand-trinary-inverse-color"
-                        id="ribbon_trigger"
-                        href="#"
-                      >
-                        {result.offer.label}
-                      </a>
-                    </button>
-                    <Dialog
-                      targetId="dialog_offer"
-                      offer={{
-                        title: result.offer.dialog[0].title,
-                        body: result.offer.dialog[0].body,
-                      }}
-                    />
-                  </span>
-                ) : (
-                  ""
-                )}
-              </div>
-            </div>
             <CategorySales items={result.modular_blocks[0]} />
           </header>
 

@@ -29,7 +29,7 @@ class StaffVideo extends React.Component {
            return <div className="col-xs-12 col-sm-6 col-md-3 col-lg-3" key={idx}>
               <iframe
                 title="vimeo-player"
-                src={"https://player.vimeo.com/video/"+ video.video}
+                src={"https://player.vimeo.com/video/"+ video.vimeo}
                 frameBorder="0"
                 allowFullScreen
               ></iframe>
