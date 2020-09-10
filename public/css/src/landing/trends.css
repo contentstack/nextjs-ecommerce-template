@@ -1,0 +1,72 @@
+#trends {
+    background: #fff;
+    clear: both;
+}
+
+.trend {
+    position: relative;
+    background-size: cover;
+    height: 300px;
+}
+
+.trend .trend-detail {
+    position: absolute;
+    background: #fff;
+    border-top: 3px solid #d4c694;
+    padding: 1.25em 1.5em;
+    box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.16);
+}
+
+.trend .trend-detail h5 {
+    margin: 0 0 .45em 0;
+    font-size: .9em;
+    letter-spacing: 0.02em;
+    color: #ada071; /* darker */
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.trend .trend-detail .trend-name {
+    font-size: 1.5em;
+}
+
+.trend .trend-detail .trend-about {
+    margin-bottom: 1.15em;
+}
+
+.trend .trend-detail .trend-discover {
+    background: transparent;
+    border: 2px solid #d4c694;
+    color: #bfb387; /* darker than above */
+
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    padding: .75em 1.25em;
+    text-transform: uppercase;
+    display: inline-block;
+}
+
+.trend-discover:hover {
+    text-decoration: none;
+}
+
+.trend.horizontal .trend-detail {
+    left: 2em;
+    right: 2em;
+    bottom: 2em;
+}
+
+.trend.horizontal .trend-detail .trend-name {
+    margin: 0;
+}
+
+.trend.vertical .trend-detail {
+    right: 2em;
+    top: 3em;
+    bottom: 2em;
+    width: 55%;
+}
+
+.trend.vertical .trend-detail .trend-name {
+    margin: 0 0 .75em 0;
+}

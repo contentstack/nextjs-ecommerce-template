@@ -1,0 +1,43 @@
+.explainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #fff;
+    height: 250px;
+}
+
+.explainer h3 {
+    margin-bottom: 20px;
+}
+
+.explainer p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.explainer-container.full-width {
+    margin-left: -100%;
+    margin-right: -100%;
+}
+
+.explainer-container.full-width .explainer {
+    height: 200px;
+}
+
+.explainer-button {
+    color: #fff;
+    background: #003628;
+    box-shadow: 0 3px 6px rgba(0,0,0,.34);
+    display: inline-block;
+    padding: 1em 2em;
+    font-weight: 500;
+    font-size: 1.1em;
+}
+
+.explainer-button:active,
+.explainer-button:focus,
+.explainer-button:hover {
+    text-decoration: none;
+    color: #fff;
+}

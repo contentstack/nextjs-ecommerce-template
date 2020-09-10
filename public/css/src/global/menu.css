@@ -1,0 +1,174 @@
+.sd-menu {
+  overflow: hidden;
+  z-index: 1000;
+
+  height: 54px;
+
+  display: flex;
+  align-items: center;
+
+  white-space: nowrap;
+}
+
+.sd-menu.sticky {
+  z-index: 3000;
+  position: static;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.sd-menu a,
+.sd-menu a:hover .sd-menu a:focus,
+.sd-menu a:active {
+  text-decoration: none;
+}
+
+.sd-menu-brand {
+  margin-right: 1em;
+}
+
+.sd-menu-dropdown {
+  height: 100%;
+  overflow: hidden;
+}
+
+.sd-menu-dropdown-button {
+  border: none;
+  outline: none;
+  font: inherit;
+  background-color: inherit;
+  margin: 0;
+}
+
+.sd-menu-title {
+  font-weight: bold;
+}
+
+.sd-menu-title:after {
+  content: " ";
+  position: relative;
+  display: block;
+  top: 6px;
+  width: 3em;
+  height: 2px;
+}
+
+.sd-menu-link {
+  display: flex;
+  align-items: center;
+}
+
+.sd-menu-link,
+.sd-menu-dropdown-button {
+  padding: 14px 16px;
+  height: 100%;
+}
+
+.sd-menu-dropdown-content {
+  display: none;
+  position: absolute;
+  left: 15px;
+  right: 15px;
+  z-index: 1000;
+}
+
+.sd-menu-dropdown:hover .sd-menu-dropdown-content {
+  display: block;
+}
+
+.sd-menu-row {
+  display: flex;
+  flex-flow: column wrap;
+  align-content: space-between;
+  height: 550px;
+  padding: 1.5em 3em;
+  overflow: hidden;
+  background-color: #e8e8e9;
+}
+
+.sd-menu-column {
+  width: 22%;
+  margin-bottom: 2%;
+}
+
+.sd-menu-column h3 {
+  margin: 0 0 2em 0;
+  text-transform: uppercase;
+  font-size: 1em !important;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.sd-menu-column h3:after {
+  content: " ";
+  position: relative;
+  display: block;
+  top: 6px;
+  width: 2em;
+  height: 2px;
+}
+
+.sd-menu-column a {
+  display: block;
+  padding-bottom: 0.5em;
+}
+
+.sd-menu-column.sd-menu-terminal {
+  height: 0;
+  width: 100% !important;
+  order: 1 !important;
+}
+
+.sd-menu-column:nth-child(4n + 1) {
+  order: 1;
+}
+.sd-menu-column:nth-child(4n + 2) {
+  order: 2;
+}
+.sd-menu-column:nth-child(4n + 3) {
+  order: 3;
+}
+.sd-menu-column:nth-child(4n) {
+  order: 4;
+}
+
+.sd-menu-row::before,
+.sd-menu-row::after {
+  content: "";
+  flex-basis: 100%;
+  width: 0;
+  order: 2;
+}
+
+#header-options {
+  white-space: nowrap;
+  display: flex;
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  justify-content: flex-end;
+  list-style: none;
+}
+
+#header-options .fa-wrench {
+  position: relative;
+  top: -2px;
+}
+
+#header-options .lang-dropdown {
+  margin-right: 1em;
+}
+
+@media screen and (max-width: 800px) {
+  .sd-menu-row {
+    display: block;
+    overflow-y: scroll;
+  }
+
+  .sd-menu-column {
+    width: 22%;
+    height: auto;
+    order: unset;
+  }
+}

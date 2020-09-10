@@ -1,0 +1,5 @@
+.news-article-theme-2-columns .news-article {
+    columns: 2;
+    column-gap: 2em;
+    text-align: justify;
+}

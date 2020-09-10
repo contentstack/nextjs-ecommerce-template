@@ -1,0 +1,48 @@
+#reviews {
+    padding: 2em 3em;
+    background: #fff;
+}
+
+#reviews > header {
+    margin-bottom: 2em;
+}
+
+#reviews > header h2 {
+    margin-top: 0;
+}
+
+#reviews > header .subtitle {
+    color: #a7a7a7;
+}
+
+#reviews .row {
+    overflow-y: hidden;
+    overflow-x: auto;
+}
+
+#reviews .reviewer {
+    display: flex;
+}
+
+#reviews .reviewer .reviewer-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    margin-right: 1.5em;
+    display: block;
+}
+
+#reviews .reviewer .reviewer-name {
+    font-size: 1.1em;
+    margin: 0;
+    font-weight: 600;
+}
+
+#reviews .reviewer .reviewer-stats {
+    font-size: .9em;
+    color: #bbbbbb;
+}
+
+#reviews .reviewer .reviewer-social {
+    color: #5f5f5f;
+}

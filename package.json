@@ -1,0 +1,21 @@
+{
+  "name": "@contentstack/contentstack-nextjs-sales-demo",
+  "version": "1.0.0",
+  "author": "Contentstack",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "contentstack": "^3.10.1",
+    "next": "9.4.4",
+    "react": "16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.5.0",
+    "eslint-plugin-react": "^7.20.3"
+  }
+}

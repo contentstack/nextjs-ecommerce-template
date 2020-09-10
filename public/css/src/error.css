@@ -1,0 +1,36 @@
+body {
+    overflow: none;
+}
+
+#main-error {
+    height: 100vh;
+
+    background-size: cover;
+    background-image: url('/images/404.jpeg');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    color: #fff;
+}
+
+#main-error h1 {
+    font-size: 200px;
+    font-family: Montserrat, 'Open Sans', sans-serif;
+    color: #fff;
+}
+
+#main-error p { 
+    font-size: 2em;
+}
+
+#main-error p.is500 {
+    color: #e8e8e8;
+    background: #152c34;
+    padding: .25em;
+    font-size: 1.5em;
+    width: 50%;
+    text-align: center;
+    font-weight: 300;
+}

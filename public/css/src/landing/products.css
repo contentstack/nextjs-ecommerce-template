@@ -1,0 +1,80 @@
+#products > header {
+    margin-bottom: 2em;
+}
+
+#products > header h2 {
+    margin-top: 0;
+}
+
+#products > header .subtitle {
+    color: #a7a7a7;
+}
+
+#products .product header {
+    position: relative;
+}
+
+#products .product header .chip {
+    position: absolute;
+    left: 1em;
+    top: 1em;
+    color: #fff;
+    padding: .25em .5em;
+    text-transform: uppercase;
+}
+
+#products .product header .hot {
+    background: #e85a51;
+}
+
+#products .product header .new {
+    background: #259a2a;
+}
+
+#products .product .product-link {
+    text-decoration: none;
+    color: #000
+}
+
+#products .product .product-link:hover .product-name {
+    color: #a5996d;
+}
+
+#products .product footer {
+    margin-top: 1.25em;
+}
+
+#products .product footer h5 {
+    margin: 0 0 .45em 0;
+    font-size: .9em;
+    letter-spacing: 0.02em;
+    color: #ada071; /* darker */
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+#products .product footer .product-name {
+    font-size: 1.09em;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 15px;
+    color: #000;
+}
+
+#products .product img {
+    border: 1px solid #efefef;
+    padding: .25em;
+}
+
+.product-name:hover {
+    text-decoration: none;
+}
+
+#products .product footer .product-price .now {
+    margin-right: 1em;
+}
+
+#products .product footer .product-price .was {
+    color: silver;
+    text-decoration: line-through;
+}

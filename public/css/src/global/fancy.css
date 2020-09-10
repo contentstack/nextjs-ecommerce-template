@@ -1,0 +1,16 @@
+h2.fancy {
+    text-transform: uppercase;
+    margin: 1.5em;
+    font-weight: 400;
+}
+
+h2.fancy:after {
+    content: " ";
+    position: relative;
+    display: block;
+    top: 6px;
+    margin: auto;
+    width: 1.5em;
+    height: 2px;
+    background: #000;
+}

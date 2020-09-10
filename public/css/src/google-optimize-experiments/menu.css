@@ -1,0 +1,11 @@
+body.sd-menu-fixed {
+    margin-top: 54px;
+}
+
+body.sd-menu-fixed .sd-menu-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}

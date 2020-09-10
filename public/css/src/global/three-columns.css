@@ -1,0 +1,27 @@
+.three-columns-detail {
+    background: #EAF3E9;
+    border-radius: 3px;
+    padding: 1em;
+    text-align: center;
+}
+
+.three-columns-detail h3 {
+    color: #003628;
+}
+
+.three-columns-detail img {
+    width: 75px;
+    height: 75px;
+    margin: 1em auto;
+    display: block;
+}
+
+.three-columns-detail p {
+    color: #6c6b63;
+}
+
+@media only screen and (max-width: 991px) {
+    .three-columns-detail {
+        margin-bottom: 1.5em;
+    }
+}
