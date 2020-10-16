@@ -17,16 +17,9 @@ class Example extends React.Component {
         locale = query.locale;
       }
 
-      console.log("custom_pages",
-      query.example,
-      locale);
+      let result = await Stack.getEntrySpecific("custom_pages", locale);
+      result = result[0].filter((el) => el.uid == query.example[1]);
 
-      let result = await Stack.getEntrySpecific(
-        "custom_pages",
-        locale
-      );
-      result = result[0].filter(el => el.uid == query.example[1] )
-  
       const header = await Stack.getEntryWithoutRef("menu", locale);
       return {
         data: {
@@ -48,18 +41,22 @@ class Example extends React.Component {
   }
   componentDidMount() {
     let search = new URL(window.location.href).search;
+
     if (search.includes("locale")) {
-      $("#selectpicker").val("fr-fr");
+      document.body.setAttribute("data-locale", "fr-fr");
     } else {
       $("#selectpicker").val("en-us");
+      document.body.setAttribute("data-locale", "en-us");
     }
-    console.log(this.props.data.result );
+    document.body.setAttribute("data-pageref", this.props.data.result.uid);
+    document.body.setAttribute("data-contenttype", "custom_pages");
+
     this.setState({ result: this.props.data.result });
   }
 
   render() {
     let result = this.state.result;
-    console.log(result);
+
     function renderContent() {
       let send = [];
       if (result) {

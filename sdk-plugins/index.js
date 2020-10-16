@@ -1,12 +1,10 @@
 const Contentstack = require("contentstack");
-import getConfig from 'next/config'
-const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
 
 const Stack = Contentstack.Stack({
-  api_key: serverRuntimeConfig.api_key? serverRuntimeConfig.api_key:publicRuntimeConfig.api_key,
-  delivery_token: serverRuntimeConfig.delivery_token? serverRuntimeConfig.delivery_token:publicRuntimeConfig.delivery_token,
-  environment: serverRuntimeConfig.environment? serverRuntimeConfig.environment:publicRuntimeConfig.environment,
-  region: serverRuntimeConfig.region ? serverRuntimeConfig.region : publicRuntimeConfig.region? publicRuntimeConfig.region:"us",
+  api_key: process.env.API_KEY,
+  delivery_token: process.env.DELIVERY_TOKEN,
+  environment: process.env.ENVIRONMENT,
+  region: process.env.REGION?process.env.REGION:'us',
 });
 
 export default {
@@ -66,7 +64,6 @@ export default {
     });
   },
   getEntrySpecificWithRef(ctUid, entryId, ref, locale) {
-    console.log(ctUid, entryId, ref, locale);
     return new Promise((resolve, reject) => {
       Stack.ContentType(ctUid)
         .Query()

@@ -41,11 +41,15 @@ class CategoryType extends React.Component {
 
   componentDidMount() {
     let search = new URL(window.location.href).search;
+    
     if (search.includes("locale")) {
-      $("#selectpicker").val("fr-fr");
+      document.body.setAttribute("data-locale", "fr-fr");
     } else {
       $("#selectpicker").val("en-us");
+      document.body.setAttribute("data-locale", "en-us");
     }
+    document.body.setAttribute("data-pageref", this.props.data.result.uid);
+    document.body.setAttribute("data-contenttype", "category");
   }
 
   render() {

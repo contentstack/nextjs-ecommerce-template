@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/no-unescaped-entities */
 import React from "react";
 import Stack from "../sdk-plugins/index";
@@ -24,7 +25,7 @@ class Products extends React.Component {
         data: {
           result: result[0],
           header: header[0][0],
-          locale: locale
+          locale: locale,
         },
       };
     } catch (error) {
@@ -33,12 +34,14 @@ class Products extends React.Component {
   }
   componentDidMount() {
     let search = new URL(window.location.href).search;
-    console.log(this.props.data.result);
     if (search.includes("locale")) {
-      $("#selectpicker").val("fr-fr");
+      document.body.setAttribute("data-locale", "fr-fr");
     } else {
       $("#selectpicker").val("en-us");
+      document.body.setAttribute("data-locale", "en-us");
     }
+    document.body.setAttribute("data-pageref", this.props.data.result.uid);
+    document.body.setAttribute("data-contenttype", "product");
   }
   render() {
     return (

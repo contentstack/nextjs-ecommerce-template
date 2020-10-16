@@ -15,32 +15,32 @@ import CategoryProducts from "../../template/landing-page/products";
 class LandingPage extends React.Component {
   static async getInitialProps({ query }) {
     try {
-        let locale;
-        if (query.locale != undefined) {
-          locale = query.locale;
-        } else {
-          locale = "en-us";
-        }
-        const result = await Stack.getEntryWithRef(
-          "landing_pages",
-          [
-            "offer.dialog",
-            "modular_blocks.products.reference",
-            "modular_blocks.products.reference.categories",
-            "modular_blocks.category_sales.categories.category",
-            "modular_blocks.trending.categories.category",
-          ],
-          locale
-        );
-        const header = await Stack.getEntryWithoutRef("menu", locale);
-        return {
-          data: {
-            result: result[0][0],
-            header: header[0][0],
-            statusCode: 200,
-            locale: locale,
-          },
-        };
+      let locale;
+      if (query.locale != undefined) {
+        locale = query.locale;
+      } else {
+        locale = "en-us";
+      }
+      const result = await Stack.getEntryWithRef(
+        "landing_pages",
+        [
+          "offer.dialog",
+          "modular_blocks.products.reference",
+          "modular_blocks.products.reference.categories",
+          "modular_blocks.category_sales.categories.category",
+          "modular_blocks.trending.categories.category",
+        ],
+        locale
+      );
+      const header = await Stack.getEntryWithoutRef("menu", locale);
+      return {
+        data: {
+          result: result[0][0],
+          header: header[0][0],
+          statusCode: 200,
+          locale: locale,
+        },
+      };
     } catch (error) {
       console.log(error);
       return { data: { statusCode: error.statusCode } };
@@ -50,14 +50,18 @@ class LandingPage extends React.Component {
   componentDidMount() {
     let search = new URL(window.location.href).search;
     if (search.includes("locale")) {
-      $("#selectpicker").val("fr-fr");
+      document.body.setAttribute("data-locale", "fr-fr");
     } else {
       $("#selectpicker").val("en-us");
+      document.body.setAttribute("data-locale", "en-us");
     }
+    document.body.setAttribute("data-pageref", this.props.data.result.uid);
+    document.body.setAttribute("data-contenttype", "landing_pages");
   }
 
   render() {
     const result = this.props.data.result;
+
     return this.props.data.statusCode === 200 ? (
       <Layout header={this.props.data.header} jsonCode={this.props.data.result}>
         <div id="landing-page">
