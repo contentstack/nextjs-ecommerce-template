@@ -1,28 +1,38 @@
 /* eslint-disable react/prop-types */
 import React from "react";
+import Link from "next/link";
 class ProductCard extends React.Component {
   render() {
     const card = this.props.productCard;
-    function createCard(item, id) {
+    const createCard=(item, id)=> {
       return (
         <div
           className="product-card col-lg-3 col-md-4 col-sm-6 col-xs-12"
           key={id}
         >
           <div className="product-card-image-container">
-            <a href={item.url}>
-              <img src={item.featured_image[0].url + "?width=225&height=225"} />
-            </a>
+            <Link
+              href={{
+                pathname: item.url,
+                query: { locale: this.props.locale },
+              }}
+            >
+              <a>
+                <img
+                  src={item.featured_image[0].url + "?width=225&height=225"}
+                />
+              </a>
+            </Link>
           </div>
           <div className="product-card-details">
             <h4>{item.title}</h4>
-            <h5>{'$'+item.price}</h5>
+            <h5>{"$" + item.price}</h5>
           </div>
           {addToCart(item)}
         </div>
       );
     }
-    function addToCart(item) {
+    const addToCart= (item)=> {
       return (
         <div className="simpleCart_shelfItem">
           <img

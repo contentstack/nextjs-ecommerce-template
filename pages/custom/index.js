@@ -2,13 +2,19 @@
 import React from "react";
 import Stack from "../../sdk-plugins/index";
 import Layout from "../../components/Layout";
+import Link from "next/link";
+
 class AllCustomPage extends React.Component {
-  static async getInitialProps({ query }) {
+  constructor(props){
+    super(props);
+    this.state ={locale:undefined}
+  }
+  static async getInitialProps(crx) {
     let locale;
-    if (query.locale == undefined) {
+    if (crx.query.locale == undefined) {
       locale = "en-us";
     } else {
-      locale = query.locale;
+      locale = crx.query.locale;
     }
 
     const result = await Stack.getEntryWithoutRef("custom_pages", locale);
@@ -18,11 +24,18 @@ class AllCustomPage extends React.Component {
 
   componentDidMount() {
     let search = new URL(window.location.href).search;
-    
-    if (search.includes("locale")) {
+
+    if (search.includes("fr-fr")) {
+      $("#selectpicker").val("fr-fr");
+      this.setState({locale:"fr-fr"})
       document.body.setAttribute("data-locale", "fr-fr");
+    } else if (search.includes("es")) {
+      $("#selectpicker").val("es");
+      this.setState({locale:"es"})
+      document.body.setAttribute("data-locale", "es");
     } else {
       $("#selectpicker").val("en-us");
+      this.setState({locale:"en-us"})
       document.body.setAttribute("data-locale", "en-us");
     }
     document.body.setAttribute("data-pageref", this.props.data.result.uid);
@@ -41,34 +54,41 @@ class AllCustomPage extends React.Component {
             </div>
           </div>
 
-          {this.props.data.result.map(function (card, idx) {
+          {this.props.data.result.map((card, idx)=> {
             return (
               <div
                 className="listing-page-card col-lg-3 col-md-4 col-sm-6 col-xs-12"
                 key={idx}
               >
-                <a href={card.url} className="listing-page-card-details">
-                  <h4>{card.title}</h4>
-                  <p>
-                    Example using:{" "}
-                    <span className="listing-page-card-using">
-                      {card.modular_blocks
-                        .map((obj) => Object.keys(obj))
-                        .toString()}
-                    </span>
-                    .
-                  </p>
-                  <footer>
-                    <p className="listing-page-card-author">
-                      <ion-icon name="person-outline"></ion-icon>{" "}
-                      {card._owner.first_name} {card._owner.last_name}
+                <Link
+                  href={{
+                    pathname: card.url,
+                    query: { locale: this.state.locale },
+                  }}
+                >
+                  <a className="listing-page-card-details">
+                    <h4>{card.title}</h4>
+                    <p>
+                      Example using:{" "}
+                      <span className="listing-page-card-using">
+                        {card.modular_blocks
+                          .map((obj) => Object.keys(obj))
+                          .toString()}
+                      </span>
+                      .
                     </p>
-                    <p className="listing-page-card-updated">
-                      <ion-icon name="time-outline"></ion-icon>{" "}
-                      {`${new Date(card.publish_details.time)}`}
-                    </p>
-                  </footer>
-                </a>
+                    <footer>
+                      <p className="listing-page-card-author">
+                        <ion-icon name="person-outline"></ion-icon>{" "}
+                        {card._owner.first_name} {card._owner.last_name}
+                      </p>
+                      <p className="listing-page-card-updated">
+                        <ion-icon name="time-outline"></ion-icon>{" "}
+                        {`${new Date(card.publish_details.time)}`}
+                      </p>
+                    </footer>
+                  </a>
+                </Link>
               </div>
             );
           })}

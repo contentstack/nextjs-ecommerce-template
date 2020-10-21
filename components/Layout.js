@@ -36,7 +36,7 @@ class Layout extends Component {
           ></link>
         </Head>
         <Header header={this.props.header} jsonCode={this.props.jsonCode}/>
-        <GlobalBanner />
+        {this.props.header.global_banner.enabled?<GlobalBanner context={this.props.header.global_banner}/>:null}
         <main>{this.props.children}</main>
         <Footer />
       </div>

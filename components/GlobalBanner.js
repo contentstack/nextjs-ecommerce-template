@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import Dialog from "./Dialog";
 class GlobalBanner extends React.Component {
@@ -17,17 +18,15 @@ class GlobalBanner extends React.Component {
             data-target="#dialog_devtools"
           >
             <a id="dialog_global_banner_trigger" href="#">
-              To Our Community: Please read this important update.
+              {this.props.context.label}
             </a>
           </button>
         </article>
         <Dialog
           targetId="dialog_devtools"
           offer={{
-            title: "An Important Update",
-            body:
-              "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>",
-          }}
+            title: this.props.context.dialog[0].title,
+            body:this.props.context.dialog[0].body }}
         />
       </div>
     );

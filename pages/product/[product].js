@@ -6,21 +6,23 @@ import Stack from "../../sdk-plugins/index";
 import ProductCard from "../../components/ProductCard";
 
 class Product extends React.Component {
-  static async getInitialProps({ query }) {
+  static async getInitialProps(crx) {
     try {
-      let locale;
-      if (query.locale == undefined) {
-        locale = "en-us";
+      let locale, entryURL;
+      if (crx.query.locale != undefined) {
+        locale = crx.query.locale;
+        entryURL = crx.asPath.split("?locale")[0];
       } else {
-        locale = query.locale;
+        locale = "en-us";
+        entryURL = crx.asPath;
       }
       const result = await Stack.getEntrySpecificWithRef(
         "product",
-        query.product,
+        entryURL,
         ["categories", "related_products"],
         locale
       );
-      const header = await Stack.getEntryWithoutRef("menu", locale);
+      const header = await Stack.getEntryWithRef("menu","global_banner.dialog",locale);
       return {
         data: {
           result: result[0][0],
@@ -43,8 +45,12 @@ class Product extends React.Component {
 
   componentDidMount() {
     let search = new URL(window.location.href).search;
-    if (search.includes("locale")) {
+    if (search.includes("fr-fr")) {
+      $("#selectpicker").val("fr-fr");
       document.body.setAttribute("data-locale", "fr-fr");
+    } else if (search.includes("es")) {
+      $("#selectpicker").val("es");
+      document.body.setAttribute("data-locale", "es");
     } else {
       $("#selectpicker").val("en-us");
       document.body.setAttribute("data-locale", "en-us");

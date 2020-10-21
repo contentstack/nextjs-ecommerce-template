@@ -13,11 +13,11 @@ import StaffVideo from "../../template/landing-page/staff-videos";
 import CategoryProducts from "../../template/landing-page/products";
 
 class LandingPage extends React.Component {
-  static async getInitialProps({ query }) {
+  static async getInitialProps(crx) {
     try {
       let locale;
-      if (query.locale != undefined) {
-        locale = query.locale;
+      if (crx.query.locale != undefined) {
+        locale = crx.query.locale;
       } else {
         locale = "en-us";
       }
@@ -32,7 +32,7 @@ class LandingPage extends React.Component {
         ],
         locale
       );
-      const header = await Stack.getEntryWithoutRef("menu", locale);
+      const header = await Stack.getEntryWithRef("menu","global_banner.dialog",locale);
       return {
         data: {
           result: result[0][0],
@@ -49,8 +49,12 @@ class LandingPage extends React.Component {
 
   componentDidMount() {
     let search = new URL(window.location.href).search;
-    if (search.includes("locale")) {
+    if (search.includes("fr-fr")) {
+      $("#selectpicker").val("fr-fr");
       document.body.setAttribute("data-locale", "fr-fr");
+    } else if (search.includes("es")) {
+      $("#selectpicker").val("es");
+      document.body.setAttribute("data-locale", "es");
     } else {
       $("#selectpicker").val("en-us");
       document.body.setAttribute("data-locale", "en-us");

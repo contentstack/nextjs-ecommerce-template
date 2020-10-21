@@ -1,3 +1,4 @@
+
 function removeChars(url) {
     return url.substr(0, url.length - 1);
 }

@@ -1,12 +1,28 @@
+/* eslint-disable react/jsx-key */
 /* eslint-disable react/prop-types */
 import React, { Component } from "react";
+import Link from "next/link";
 import DevTools from "./DevTools";
 
 class Header extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { locale: undefined };
+  }
+  componentDidMount() {
+    let search = new URL(window.location.href).search;
+    if (search.includes("fr-fr")) {
+      this.setState({ locale: "fr-fr" });
+    } else if (search.includes("es")) {
+      this.setState({ locale: "es" });
+    } else {
+      this.setState({ locale: "en-us" });
+    }
+  }
 
   render() {
-    function createMenu(header) {
-      return header.menu_section.map(function (list, idx) {
+    const createMenu = (header) => {
+      return header.menu_section.map((list, idx) => {
         if (list.column.length !== 0) {
           return (
             <div className="sd-menu-dropdown" key={idx}>
@@ -17,8 +33,8 @@ class Header extends Component {
               </button>
               <div className="sd-menu-dropdown-content theme--menu-content-background">
                 <div className="sd-menu-row">
-                  {list.column.map(function (col) {
-                    return col.group.map(function (group, idx) {
+                  {list.column.map((col) => {
+                    return col.group.map((group, idx) => {
                       return group.menu_item.length != 0 ? (
                         <div className="sd-menu-column" key={idx}>
                           <h3
@@ -27,16 +43,22 @@ class Header extends Component {
                           >
                             {group.group_title}
                           </h3>
-                          {group.menu_item.map(function (item, i) {
+                          {group.menu_item.map((item, i) => {
                             return (
-                              <a
+                              <Link
                                 key={i}
-                                style={{ color: "#000" }}
-                                className="sd-menu-column-link theme--menu-content-link-color"
-                                href={item.custom_link}
+                                href={{
+                                  pathname: item.custom_link,
+                                  query: { locale: this.state.locale },
+                                }}
                               >
-                                {item.item_title}
-                              </a>
+                                <a
+                                  style={{ color: "#000" }}
+                                  className="sd-menu-column-link theme--menu-content-link-color"
+                                >
+                                  {item.item_title}
+                                </a>
+                              </Link>
                             );
                           })}
                         </div>
@@ -45,13 +67,20 @@ class Header extends Component {
                           className="sd-menu-column sd-menu-terminal"
                           key={idx}
                         >
-                          <a
-                            style={{ color: "#000" }}
-                            className="sd-menu-column-link theme--menu-content-link-color"
-                            href={group.custom_link}
+                          <Link
+                            href={{
+                              pathname: group.custom_link,
+                              query: { locale: this.state.locale },
+                            }}
                           >
-                            {group.group_title}
-                          </a>
+                            <a
+                              style={{ color: "#000" }}
+                              className="sd-menu-column-link theme--menu-content-link-color"
+                              // href={group.custom_link}
+                            >
+                              {group.group_title}
+                            </a>
+                          </Link>
                         </div>
                       );
                     });
@@ -62,20 +91,26 @@ class Header extends Component {
           );
         } else {
           return (
-            <a
-              className="sd-menu-link"
-              style={{ color: "#fff" }}
-              href={list.custom_link}
+            <Link
               key={idx}
+              href={{
+                pathname: list.custom_link,
+                query: { locale: this.state.locale },
+              }}
             >
-              <span className="sd-menu-title theme--menu-font theme--menu-text-color">
-                {list.menu_title}
-              </span>
-            </a>
+              <a
+                className="sd-menu-link"
+                style={{ color: "#fff" }}
+              >
+                <span className="sd-menu-title theme--menu-font theme--menu-text-color">
+                  {list.menu_title}
+                </span>
+              </a>
+            </Link>
           );
         }
       });
-    }
+    };
     return this.props.header ? (
       <header>
         <div
@@ -86,25 +121,30 @@ class Header extends Component {
             <div className="row">
               <div className="col-lg-12">
                 <div className="sd-menu theme--menu-background">
-                  <a className="sd-menu-brand" href="/">
-                    <img
-                      src="/badger-35.png"
-                      alt="logo"
-                      width="35px"
-                      height="35px"
-                    />
-                  </a>
+                  <Link
+                    href={{
+                      pathname: "/",
+                      query: { locale: this.state.locale },
+                    }}
+                  >
+                    <a className="sd-menu-brand">
+                      <img
+                        src="/badger-35.png"
+                        alt="logo"
+                        width="35px"
+                        height="35px"
+                      />
+                    </a>
+                  </Link>
                   {createMenu(this.props.header)}
                   <ul className="theme--menu-text-color" id="header-options">
                     <li>
                       <div className="lang-dropdown">
                         <i className="fa fa-globe" aria-hidden="true"></i>
-                        <select
-                          id="selectpicker"
-                          data-width="fit"
-                        >
+                        <select id="selectpicker" data-width="fit">
                           <option value="en-us">English</option>
                           <option value="fr-fr">French</option>
+                          <option value="es">Spanish</option>
                         </select>
                       </div>
                     </li>

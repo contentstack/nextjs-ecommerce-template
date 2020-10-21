@@ -6,13 +6,18 @@ import Layout from "../components/Layout";
 import ProductCard from "../components/ProductCard";
 
 class Products extends React.Component {
-  static async getInitialProps({ query }) {
+
+  constructor(props) {
+    super(props);
+    this.state = { locale: undefined };
+  }
+  static async getInitialProps(crx) {
     try {
       let locale;
-      if (query.locale == undefined) {
+      if (crx.query.locale == undefined) {
         locale = "en-us";
       } else {
-        locale = query.locale;
+        locale = crx.query.locale;
       }
 
       const result = await Stack.getEntryWithRef(
@@ -20,7 +25,7 @@ class Products extends React.Component {
         ["categories", "related_products"],
         locale
       );
-      const header = await Stack.getEntryWithoutRef("menu", locale);
+      const header = await Stack.getEntryWithRef("menu","global_banner.dialog",locale);
       return {
         data: {
           result: result[0],
@@ -34,10 +39,17 @@ class Products extends React.Component {
   }
   componentDidMount() {
     let search = new URL(window.location.href).search;
-    if (search.includes("locale")) {
+    if (search.includes("fr-fr")) {
+      $("#selectpicker").val("fr-fr");
+      this.setState({ locale: "fr-fr" });
       document.body.setAttribute("data-locale", "fr-fr");
+    } else if (search.includes("es")) {
+      $("#selectpicker").val("es");
+      this.setState({ locale: "es" });
+      document.body.setAttribute("data-locale", "es");
     } else {
       $("#selectpicker").val("en-us");
+      this.setState({ locale: "en-us" });
       document.body.setAttribute("data-locale", "en-us");
     }
     document.body.setAttribute("data-pageref", this.props.data.result.uid);
@@ -52,7 +64,10 @@ class Products extends React.Component {
           <div className="row">
             {this.props.data.result.length ? (
               <div>
-                <ProductCard productCard={this.props.data.result} />
+                <ProductCard
+                  productCard={this.props.data.result}
+                  locale={this.state.locale}
+                />
               </div>
             ) : (
               <div className="col-lg-12">

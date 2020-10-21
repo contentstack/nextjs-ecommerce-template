@@ -24,13 +24,13 @@ class CategoryType extends React.Component {
         query.type,
         locale
       );
-      const header = await Stack.getEntryWithoutRef("menu", locale);
+      const header = await Stack.getEntryWithRef("menu","global_banner.dialog",locale);
       return {
         data: {
           category: check[0].title,
           header: header[0][0],
           statusCode: 200,
-          result: result[0]
+          result: result[0],
         },
       };
     } catch (err) {
@@ -41,9 +41,13 @@ class CategoryType extends React.Component {
 
   componentDidMount() {
     let search = new URL(window.location.href).search;
-    
-    if (search.includes("locale")) {
+
+    if (search.includes("fr-fr")) {
+      $("#selectpicker").val("fr-fr");
       document.body.setAttribute("data-locale", "fr-fr");
+    } else if (search.includes("es")) {
+      $("#selectpicker").val("es");
+      document.body.setAttribute("data-locale", "es");
     } else {
       $("#selectpicker").val("en-us");
       document.body.setAttribute("data-locale", "en-us");

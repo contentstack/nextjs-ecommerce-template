@@ -7,15 +7,19 @@ import Stack from "../sdk-plugins/index";
 import ProductCard from "../components/ProductCard";
 import Explainer from "../components/Explainer";
 
-
 let locale;
 class Home extends React.Component {
-  static async getInitialProps({ query }) {
+  constructor(props) {
+    super(props);
+    this.state = { locale: undefined };
+  }
+
+  static async getInitialProps(ctx) {
     try {
-      if (query.locale == undefined) {
+      if (ctx.query.locale == undefined) {
         locale = "en-us";
       } else {
-        locale = query.locale;
+        locale = ctx.query.locale;
       }
 
       const result = await Stack.getEntryWithRef(
@@ -23,9 +27,10 @@ class Home extends React.Component {
         "new_arrivals.products",
         locale
       );
-      const header = await Stack.getEntryWithoutRef("menu", locale);
+      const header = await Stack.getEntryWithRef("menu","global_banner.dialog",locale);
+
       return {
-        data: { result: result[0][0], header: header[0][0]},
+        data: { result: result[0][0], header: header[0][0] },
       };
     } catch (error) {
       console.error(error);
@@ -34,20 +39,25 @@ class Home extends React.Component {
 
   componentDidMount() {
     let search = new URL(window.location.href).search;
-    if (search.includes("locale")) {
+    if (search.includes("fr-fr")) {
       $("#selectpicker").val("fr-fr");
-      document.body.setAttribute("data-locale","fr-fr")
+      this.setState({ locale: "fr-fr" });
+      document.body.setAttribute("data-locale", "fr-fr");
+    } else if (search.includes("es")) {
+      $("#selectpicker").val("es");
+      this.setState({ locale: "es" });
+      document.body.setAttribute("data-locale", "es");
     } else {
       $("#selectpicker").val("en-us");
-      document.body.setAttribute("data-locale", "en-us")
+      this.setState({ locale: "en-us" });
+      document.body.setAttribute("data-locale", "en-us");
     }
-    document.body.setAttribute("data-pageref", this.props.data.result.uid)
-    document.body.setAttribute("data-contenttype","homepage")
-    
+    document.body.setAttribute("data-pageref", this.props.data.result.uid);
+    document.body.setAttribute("data-contenttype", "homepage");
   }
 
   render() {
-    function threeColumn(col, idx) {
+    const threeColumn = (col, idx) => {
       return (
         <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12" key={idx}>
           <div className="three-columns-detail">
@@ -57,9 +67,9 @@ class Home extends React.Component {
           </div>
         </div>
       );
-    }
+    };
 
-    function newArrivals(arrival, id) {
+    const newArrivals = (arrival, id) => {
       return (
         <div key={id} className="newArrivalsSection">
           <div className="row">
@@ -68,11 +78,14 @@ class Home extends React.Component {
                 {arrival.title}
               </h2>
             </div>
-            <ProductCard productCard={arrival.products} />
+            <ProductCard
+              productCard={arrival.products}
+              locale={this.state.locale}
+            />
           </div>
         </div>
       );
-    }
+    };
     return (
       <Layout header={this.props.data.header} jsonCode={this.props.data.result}>
         <div className="container">
