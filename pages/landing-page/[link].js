@@ -65,7 +65,6 @@ class LandingPage extends React.Component {
 
   render() {
     const result = this.props.data.result;
-
     return this.props.data.statusCode === 200 ? (
       <Layout header={this.props.data.header} jsonCode={this.props.data.result}>
         <div id="landing-page">

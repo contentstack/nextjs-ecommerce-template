@@ -20,7 +20,6 @@ export default {
         .then(
           (result) => {
             resolve(result);
-
           },
           (error) => {
             reject(error);

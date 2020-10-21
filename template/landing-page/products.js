@@ -15,9 +15,14 @@ class CategoryProducts extends React.Component {
               <div
                 className={`${
                   result.column_count === 4
+<<<<<<< HEAD
                   ?" col-xs-12 col-sm-12 col-md-3 col-lg-3 product"
                     // ? "col-xs-6 col-sm-6 col-md-3 col-lg-3"
                     : " col-xs-12 col-sm-12 col-md-3 col-lg-3 product"
+=======
+                    ? "col-xs-6 col-sm-6 col-md-3 col-lg-3"
+                    : "col-xs-12 col-sm-12 col-md-6 col-lg-6"
+>>>>>>> 1abbdfb688d17baef25ee04f6d55504d2b1d0aa7
                 } product`}
                 key={idx}
               >
@@ -35,7 +40,11 @@ class CategoryProducts extends React.Component {
                   <footer>
                     <h5>{column.categories[0].title}</h5>
                     <p className="product-name">{column.title}</p>
+<<<<<<< HEAD
                     <p className="product-price" style={{fontSize:"2rem"}}>
+=======
+                    <p className="product-price">
+>>>>>>> 1abbdfb688d17baef25ee04f6d55504d2b1d0aa7
                       <span className="now">{"$" + column.price}</span>
                       <span className="was">$120.00</span>
                     </p>
