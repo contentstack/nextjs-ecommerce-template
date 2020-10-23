@@ -149,6 +149,7 @@
 }
 
 /* Header Menu */
+
 #header-options #cart, #search, #devtools {
     color: #737373;
     text-align: center;
@@ -190,6 +191,10 @@
     background: transparent;
     outline: none;
     border: none;
+}
+
+#selectpicker option {
+    color: #000;
 }
 
 .catergItem {

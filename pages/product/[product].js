@@ -6,6 +6,11 @@ import Stack from "../../sdk-plugins/index";
 import ProductCard from "../../components/ProductCard";
 
 class Product extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { locale: undefined, data: {} };
+  }
+
   static async getInitialProps(crx) {
     try {
       let locale, entryURL;
@@ -22,7 +27,11 @@ class Product extends React.Component {
         ["categories", "related_products"],
         locale
       );
-      const header = await Stack.getEntryWithRef("menu","global_banner.dialog",locale);
+      const header = await Stack.getEntryWithRef(
+        "menu",
+        "global_banner.dialog",
+        locale
+      );
       return {
         data: {
           result: result[0][0],
@@ -36,23 +45,20 @@ class Product extends React.Component {
       return { data: { statusCode: 404 } };
     }
   }
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: {},
-    };
-  }
 
   componentDidMount() {
     let search = new URL(window.location.href).search;
     if (search.includes("fr-fr")) {
       $("#selectpicker").val("fr-fr");
+      this.setState({ locale: "fr-fr" });
       document.body.setAttribute("data-locale", "fr-fr");
     } else if (search.includes("es")) {
       $("#selectpicker").val("es");
+      this.setState({ locale: "es" });
       document.body.setAttribute("data-locale", "es");
     } else {
       $("#selectpicker").val("en-us");
+      this.setState({ locale: "en-us" });
       document.body.setAttribute("data-locale", "en-us");
     }
     document.body.setAttribute("data-pageref", this.props.data.result.uid);
@@ -75,7 +81,7 @@ class Product extends React.Component {
       });
     }
 
-    function renderContent() {
+    const renderContent = () => {
       if (data) {
         return (
           <div className="container">
@@ -231,7 +237,10 @@ class Product extends React.Component {
 
                 <div className="row">
                   {data.related_products ? (
-                    <ProductCard productCard={data.related_products} />
+                    <ProductCard
+                      productCard={data.related_products}
+                      locale={this.state.locale}
+                    />
                   ) : (
                     ""
                   )}
@@ -243,7 +252,7 @@ class Product extends React.Component {
           </div>
         );
       }
-    }
+    };
 
     return this.props.data.statusCode === 200 ? (
       <Layout header={this.props.data.header} jsonCode={this.props.data.result}>
