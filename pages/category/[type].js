@@ -7,6 +7,11 @@ import Stack from "../../sdk-plugins/index";
 import ProductCard from "../../components/ProductCard";
 
 class CategoryType extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = { locale: undefined };
+  }
   static async getInitialProps({ query }) {
     try {
       let locale;
@@ -44,12 +49,15 @@ class CategoryType extends React.Component {
 
     if (search.includes("fr-fr")) {
       $("#selectpicker").val("fr-fr");
+      this.setState({ locale: "fr-fr" });
       document.body.setAttribute("data-locale", "fr-fr");
     } else if (search.includes("es")) {
       $("#selectpicker").val("es");
+      this.setState({ locale: "es" });
       document.body.setAttribute("data-locale", "es");
     } else {
       $("#selectpicker").val("en-us");
+      this.setState({ locale: "en-us" });
       document.body.setAttribute("data-locale", "en-us");
     }
     document.body.setAttribute("data-pageref", this.props.data.result.uid);
@@ -67,7 +75,7 @@ class CategoryType extends React.Component {
 
           <div className="row">
             {data.result.length != 0 ? (
-              <ProductCard productCard={data.result} />
+              <ProductCard productCard={data.result} locale={this.state.locale} />
             ) : (
               <div className="col-lg-12">
                 <div className="well">
