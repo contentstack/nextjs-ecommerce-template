@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from "react";
 import Error from "next/error";
+import Link from "next/link";
 import Layout from "../../components/Layout";
 import Stack from "../../sdk-plugins/index";
 import ProductCard from "../../components/ProductCard";
@@ -89,12 +90,19 @@ class Product extends React.Component {
               <div className="col-lg-12">
                 <div className="breadcrumb-container">
                   {data.categories ? (
+                    <Link
+                    href={{
+                      pathname: data.categories[0].url,
+                      query: { locale: this.state.locale },
+                    }}
+                  >
                     <a
-                      className="breadcrumb-link"
-                      href={data.categories[0].url}
+                       className="breadcrumb-link"
+                       
                     >
-                      {data.categories[0].title}
-                    </a>
+                       {data.categories[0].title}
+                     </a>
+                    </Link>
                   ) : (
                     ""
                   )}
