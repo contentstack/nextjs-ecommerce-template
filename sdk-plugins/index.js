@@ -7,8 +7,7 @@ const Stack = Contentstack.Stack({
   region: process.env.region ? process.env.region : "us",
 });
 
-
-Stack.setHost("stag-api.contentstack.io");
+process.env.custom_host ? Stack.setHost(process.env.custom_host):null
 export default {
   getEntryWithRef(ctUid, ref, locale) {
     return new Promise((resolve, reject) => {
