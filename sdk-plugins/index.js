@@ -9,6 +9,7 @@ const Stack = Contentstack.Stack({
 
 process.env.custom_host ? Stack.setHost(process.env.custom_host):null
 console.log(Stack);
+console.log("env", process.env)
 export default {
   getEntryWithRef(ctUid, ref, locale) {
     return new Promise((resolve, reject) => {
