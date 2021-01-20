@@ -1,15 +1,15 @@
 const Contentstack = require("contentstack");
 
-const Stack = Contentstack.Stack({
+const Stack =process.env && Contentstack.Stack({
   api_key: process.env.api_key,
   delivery_token: process.env.delivery_token,
   environment: process.env.environment,
   region: process.env.region ? process.env.region : "us",
 });
-
-process.env.custom_host ? Stack.setHost(process.env.custom_host):null
-console.log(Stack);
-console.log("env", process.env)
+if (process.env.custom_host) {
+  Stack.setHost(process.env.custom_host)
+}
+// process.env.custom_host && Stack.setHost(process.env.custom_host)
 export default {
   getEntryWithRef(ctUid, ref, locale) {
     return new Promise((resolve, reject) => {
