@@ -47,17 +47,17 @@ class Header extends Component {
                             return (
                               <Link
                                 key={i}
+                                className="sd-menu-column-link theme--menu-content-link-color"
+                                style={{ color: "#000" }}
                                 href={{
                                   pathname: item.custom_link,
                                   query: { locale: this.state.locale },
                                 }}
                               >
-                                <a
-                                  style={{ color: "#000" }}
-                                  className="sd-menu-column-link theme--menu-content-link-color"
-                                >
-                                  {item.item_title}
-                                </a>
+                                {/* <a
+                                > */}
+                                {item.item_title}
+                                {/* </a> */}
                               </Link>
                             );
                           })}
@@ -68,18 +68,18 @@ class Header extends Component {
                           key={idx}
                         >
                           <Link
+                            style={{ color: "#000" }}
+                            className="sd-menu-column-link theme--menu-content-link-color"
                             href={{
                               pathname: group.custom_link,
                               query: { locale: this.state.locale },
                             }}
                           >
-                            <a
-                              style={{ color: "#000" }}
-                              className="sd-menu-column-link theme--menu-content-link-color"
-                              // href={group.custom_link}
-                            >
-                              {group.group_title}
-                            </a>
+                            {/* <a */}
+                            {/* // href={group.custom_link} */}
+                            {/* // > */}
+                            {group.group_title}
+                            {/* </a> */}
                           </Link>
                         </div>
                       );
@@ -93,19 +93,15 @@ class Header extends Component {
           return (
             <Link
               key={idx}
+              className="sd-menu-link"
               href={{
                 pathname: list.custom_link,
                 query: { locale: this.state.locale },
               }}
             >
-              <a
-                className="sd-menu-link"
-                style={{ color: "#fff" }}
-              >
-                <span className="sd-menu-title theme--menu-font theme--menu-text-color">
-                  {list.menu_title}
-                </span>
-              </a>
+              <span className="sd-menu-title theme--menu-font theme--menu-text-color" style={{ color: "#fff", cursor:"pointer"}}>
+                {list.menu_title}
+              </span>
             </Link>
           );
         }
@@ -122,19 +118,20 @@ class Header extends Component {
               <div className="col-lg-12">
                 <div className="sd-menu theme--menu-background">
                   <Link
+                    className="sd-menu-brand"
                     href={{
                       pathname: "/",
                       query: { locale: this.state.locale },
                     }}
                   >
-                    <a className="sd-menu-brand">
-                      <img
-                        src="/badger-35.png"
-                        alt="logo"
-                        width="35px"
-                        height="35px"
-                      />
-                    </a>
+                    {/* <a > */}
+                    <img
+                      src="/badger-35.png"
+                      alt="logo"
+                      width="35px"
+                      height="35px"
+                    />
+                    {/* </a> */}
                   </Link>
                   {createMenu(this.props.header)}
                   <ul className="theme--menu-text-color" id="header-options">
