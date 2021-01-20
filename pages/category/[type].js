@@ -62,6 +62,18 @@ class CategoryType extends React.Component {
     }
     document.body.setAttribute("data-pageref", this.props.data.result.uid);
     document.body.setAttribute("data-contenttype", "category");
+
+    $('#selectpicker').on('change', function (e){
+      let url = new URL(window.location.href)
+      let newUrl;
+      if (e.target.value === 'en-us') {
+          newUrl = url.origin+ url.pathname;
+      }
+      else{
+          newUrl = url.origin+url.pathname+`?locale=${e.target.value}`
+      }
+      window.location.assign(newUrl)
+  })
   }
 
   render() {
