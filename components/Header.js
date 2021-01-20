@@ -94,13 +94,12 @@ class Header extends Component {
             <Link
               key={idx}
               className="sd-menu-link"
-              style={{ color: "#fff" }}
               href={{
                 pathname: list.custom_link,
                 query: { locale: this.state.locale },
               }}
             >
-              <span className="sd-menu-title theme--menu-font theme--menu-text-color">
+              <span className="sd-menu-title theme--menu-font theme--menu-text-color" style={{ color: "#fff", cursor:"pointer"}}>
                 {list.menu_title}
               </span>
             </Link>
