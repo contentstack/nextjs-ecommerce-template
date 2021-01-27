@@ -3,6 +3,8 @@ import React from "react";
 import Stack from "../../sdk-plugins/index";
 import Layout from "../../components/Layout";
 import Link from "next/link";
+import moment from 'moment';
+const capitalize = (str, lower = false) => (lower ? str.toLowerCase() : str).replace(/(?:^|\s|["'([{])+\S/g, match => match.toUpperCase());
 
 class AllCustomPage extends React.Component {
   constructor(props){
@@ -92,11 +94,11 @@ class AllCustomPage extends React.Component {
                     <footer>
                       <p className="listing-page-card-author">
                         <ion-icon name="person-outline"></ion-icon>{" "}
-                        {card._owner.first_name} {card._owner.last_name}
+                        {capitalize(card._owner.first_name)} {capitalize(card._owner.last_name)}
                       </p>
                       <p className="listing-page-card-updated">
                         <ion-icon name="time-outline"></ion-icon>{" "}
-                        {`${new Date(card.publish_details.time)}`}
+                        {`Updated ${moment(card.publish_details.time).fromNow()}`}
                       </p>
                     </footer>
                   </a>
