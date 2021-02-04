@@ -85,7 +85,7 @@ class AllLandingPage extends React.Component {
                 className="listing-page-card col-lg-3 col-md-4 col-sm-6 col-xs-12"
                 key={idx}
               >
-                <Link href={{ pathname: card.url, query: this.state.locale }}>
+                <Link href={ card.url }>
                   <a className="listing-page-card-details">
                     <h4>{card.title}</h4>
                     <p>

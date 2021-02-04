@@ -75,10 +75,7 @@ class AllCustomPage extends React.Component {
                 key={idx}
               >
                 <Link
-                  href={{
-                    pathname: card.url,
-                    query: { locale: this.state.locale },
-                  }}
+                 href={ card.url }
                 >
                   <a className="listing-page-card-details">
                     <h4>{card.title}</h4>

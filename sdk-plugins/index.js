@@ -65,35 +65,37 @@ export default {
         );
     });
   },
-  getEntrySpecificWithoutRef(ctUid,entryURL, locale) { 
-  return new Promise((resolve, reject) => {
-    let blogQuery = Stack.ContentType(ctUid)
+  getEntrySpecificWithoutRef(ctUid, entryURL, locale) {
+    let url = locale === "en-us" ? `${entryURL}` : `${entryURL}?locale=${locale}`;
+    return new Promise((resolve, reject) => {
+      let blogQuery = Stack.ContentType(ctUid)
       .Query()
       .language(locale)
       .includeOwner()
       .toJSON()
       .or(
-        Stack.ContentType(ctUid).Query().where("url", entryURL)
+        Stack.ContentType(ctUid).Query().where("url", url)
       )
       .find()
       .then(
-      (result) => {
-        resolve(result[0]);
-      },
-      (error) => {
-        reject(error);
-      }
-    );
-  });
-},
+        (result) => {
+          resolve(result[0]);
+        },
+        (error) => {
+          reject(error);
+        }
+      );
+    });
+  },
   getEntrySpecificWithRef(ctUid, entryURL, ref, locale) {
+    let url = locale === "en-us" ? `${entryURL}` : `${entryURL}?locale=${locale}`;
     return new Promise((resolve, reject) => {
       Stack.ContentType(ctUid)
         .Query()
         .language(locale)
         .toJSON()
         .or(
-        Stack.ContentType(ctUid).Query().where("url", entryURL)
+          Stack.ContentType(ctUid).Query().where("url", url)
         )
         .includeReference(ref)
         .find()
@@ -108,13 +110,14 @@ export default {
     });
   },
   getEntryWithQuery(ctUid, type, locale) {
+    let url = locale === "en-us" ? `/category/${type}` : `/category/${type}?locale=${locale}`;
     return new Promise((resolve, reject) => {
       Stack.ContentType(ctUid)
         .Query()
         .language(locale)
         .toJSON()
         .limit(9)
-        .query({ categories: { $in_query: { url: `/category/${type}` } } })
+        .query({ categories: { $in_query: { url: url } } })
         .only(["title", "url", "featured_image", "product_link", "price"])
         .includeCount()
         .find()

@@ -103,10 +103,7 @@ class Product extends React.Component {
                 <div className="breadcrumb-container">
                   {data.categories ? (
                     <Link
-                    href={{
-                      pathname: data.categories[0].url,
-                      query: { locale: this.state.locale },
-                    }}
+                    href= {data.categories[0].url}
                   >
                     <a
                        className="breadcrumb-link"
