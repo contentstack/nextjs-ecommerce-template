@@ -10,7 +10,7 @@ module.exports = {
     config.plugins = [
       ...config.plugins,
       new Dotenv({
-        path: path.join(__dirname, ".env"),
+        path: path.join(__dirname, ".env.local"),
         systemvars: true,
       }),
     ];
