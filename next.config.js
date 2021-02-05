@@ -22,6 +22,6 @@ module.exports = {
     delivery_token:process.env.delivery_token,
     environment:process.env.environment,
     region:process.env.region === "eu"?"eu":"us",
-    custom_host:process.env.custom_host && process.env.custom_host
+    custom_host:process.env.custom_host? process.env.custom_host:""
   }
 };

@@ -22,7 +22,11 @@ class CategoryType extends React.Component {
       }
 
       let check = await Stack.getEntryWithoutRef("category", locale);
-      check = check[0].filter((cat) => cat.url === "/category/" + query.type);
+      if (locale !== "en-us") {
+        check = check[0].filter((cat) => cat.url === `/category/${query.type}?locale=${locale}`);
+      } else {
+        check = check[0].filter((cat) => cat.url === `/category/${query.type}`);
+      }
       if (check.length == 0) throw "Error 404";
       const result = await Stack.getEntryWithQuery(
         "product",

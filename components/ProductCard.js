@@ -5,7 +5,7 @@ class ProductCard extends React.Component {
   render() {
     const card = this.props.productCard;
     const createCard = (item, id) => {
-      let itemUrl = `${item.url}?locale=${this.props.locale}`;
+      let itemUrl = `${item.url}`;
       return (
         <div
           className="product-card col-lg-3 col-md-4 col-sm-6 col-xs-12"

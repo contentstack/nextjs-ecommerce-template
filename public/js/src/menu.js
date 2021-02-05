@@ -15,12 +15,7 @@ function toogleButtonState() {
 $('#selectpicker').on('change', function (e){
     let url = new URL(window.location.href)
     let newUrl;
-    if (e.target.value === 'en-us') {
-        newUrl = url.origin+ url.pathname;
-    }
-    else{
-        newUrl = url.origin+url.pathname+`?locale=${e.target.value}`
-    }
+    newUrl = url.origin + url.pathname + `?locale=${e.target.value}`
     window.location.assign(newUrl)
     // history.replaceState(null, null, newUrl);
     // location.reload();
