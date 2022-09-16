@@ -11,7 +11,7 @@
   "dependencies": {
     "contentstack": "^3.10.1",
     "cross-fetch": "^3.0.6",
-    "dotenv": "^8.2.0",
+    "dotenv": "^16.0.1",
     "dotenv-webpack": "^6.0.0",
     "moment": "^2.29.1",
     "next": "10.0.5",
